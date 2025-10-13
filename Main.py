@@ -95,10 +95,10 @@ positions = {
     "12-a":(3,-0.4),
     "12-b":(3.5,-0.4),
 
-    "Psychology Lab":(1,0.4),
-    "11-c":(1.5,0.4),
-    "10-a":(1,-0.4),
-    "10-b":(1.5,-0.4)
+    "Psychology Lab":(0.5,0.4),
+    "11-c":(1,0.4),
+    "10-a":(0.5,-0.4),
+    "10-b":(1,-0.4)
     
 }
 
@@ -116,6 +116,6 @@ edge_labels = nx.get_edge_attributes(G, 'weight')
 nx.draw_networkx_edge_labels(G, pos=positions, edge_labels=edge_labels)
 
 plt.title(" School Floor Navigation System")
-plt.text(1, -1, f"\n✅ Shortest path from {start} to {end}: {' → '.join(path)}", fontdict=None)
+plt.text(1, -1, f"\n✅ Shortest path from {start} to {end}: {' → '.join(path)}", fontdict=None,fontsize=10, fontweight='bold')
 plt.axis('off')
 plt.show()
