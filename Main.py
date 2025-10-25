@@ -2,17 +2,14 @@ import customtkinter as ctk
 import heapq
 import networkx as nx
 import matplotlib.pyplot as plt
-
+import matplotlib.image as mpimg
 # GitHub Copilot
 # Requires: pip install customtkinter
-
-
 ROOMS = [
     "Entrance-1", "Entrance-2", "Entrance-4",
     "Entrance-3", "10-c", "11-c", "12-c", "Coodinator", "12-b", "12-a",
     "10-b", "Psychology Lab", "Home Sci.Lab", "10-a", "Lift-1", "Lift-2", "Room3",
-    "Staircase-5", "Conserler", "Resource", "Restroom-1", "Room1", "Room4", "Room5",
-    "Room6", "Room7", "Room2", "Restroom-2", "Staffroom-2", "Staffroom", "11-b",
+    "Staircase-5", "Conserler", "Resource", "Restroom-1",  "Restroom-2", "Staffroom-2", "Staffroom", "11-b",
     "11-a", "9-b", "AV room", "Computer Lab", "Launguage Lab"
 ]
 
@@ -177,6 +174,9 @@ class App(ctk.CTk):
 
         # STEP 3: Create the Graph for Visualization ---
         G = nx.Graph()
+
+
+
         for room, connections in school_map.items():
             for connected_room, distance in connections.items():
                 G.add_edge(room, connected_room, weight=distance)
@@ -204,14 +204,16 @@ class App(ctk.CTk):
         print(f"Total distance: {total_distance} units\n")
 
         # --- STEP 6: Draw visual map ---
-        plt.figure(figsize=(10,15))
+        plt.figure(figsize=(30,30))
+        img = mpimg.imread("map1.jpg")  # <-- change filename if needed
+        plt.imshow(img, extent=[0, 16, 0, 10], alpha=1)  
 
         #  set positions 
         positions = {
-            "Entrance-1": (0, 0),
-            "Entrance-2":(4,0),
-            "Entrance-3":(4,4),
-            "Entrance-4":(0,4),
+            "Entrance-1": (3.7, 1.1),
+            "Entrance-2":(14.7,1.5),
+            "Entrance-3":(14,8.2),
+            "Entrance-4":(1.2,8),
             "Hallway-1": (2, 0),
             "Hallway-2": (0,2),
             "Hallway-3": (4, 2),
@@ -271,7 +273,7 @@ class App(ctk.CTk):
 
         # Highlight the shortest path in red
         path_edges = list(zip(path, path[1:]))
-        nx.draw_networkx_edges(G, pos=positions, edgelist=path_edges, width=5, edge_color='red')
+        nx.draw_networkx_edges(G, pos=positions, edgelist=path_edges, width=5, edge_color='Green',arrows=True,arrowstyle='-|>',arrowsize=30)
 
         # Add edge labels (distances)
         edge_labels = nx.get_edge_attributes(G, 'weight')
