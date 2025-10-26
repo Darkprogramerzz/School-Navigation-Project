@@ -206,7 +206,7 @@ class App(ctk.CTk):
         # --- STEP 6: Draw visual map ---
         plt.figure(figsize=(30,30))
         img = mpimg.imread("map1.jpg")  # <-- change filename if needed
-        plt.imshow(img, extent=[0, 16, 0, 10], alpha=1)  
+        plt.imshow(img, extent=[0, 16, 0, 10], alpha=0.8)  
 
         #  set positions 
         positions = {
@@ -214,46 +214,46 @@ class App(ctk.CTk):
             "Entrance-2":(14.7,1.5),
             "Entrance-3":(14,8.2),
             "Entrance-4":(1.2,8),
-            "Hallway-1": (2, 0),
-            "Hallway-2": (0,2),
-            "Hallway-3": (4, 2),
-            "Hallway-4": (2,4),
+            "Hallway-1": (7.6,2.2),
+            "Hallway-2": (2.4,4.8),
+            "Hallway-3": (13,5),
+            "Hallway-4": (7.7,7.2),
 
-            "10-c":(2.5,0.4),
-            "12-c":(3,0.4),
-            "12-a":(2.5,-0.4),
-            "12-b":(3,-0.4),
+            "10-c":(9.2,3.3),
+            "12-c":(7.7,3.3),
+            "12-a":(8,0.9),
+            "12-b":(9.2,0.9),
 
-            "Psychology Lab":(1,0.4),
-            "11-c":(1.5,0.4),
-            "10-a":(1,-0.4),
-            "10-b":(1.5,-0.4),
-            "Home Sci.Lab":(0.5,0.4),
+            "Psychology Lab":(5.4,3.3),
+            "11-c":(6.6,3.3),
+            "10-a":(5.5,0.9),
+            "10-b":(6.6,0.9),
+            "Home Sci.Lab":(4.1,4.1),
 
-            "Coodinator":(3.5,0.4),
-            "Conserler":(-0.5,-0.4),
-            "Lift-1":(4.4,-0.4),
-            "Resource":(3.5,1.5),
-            "Restroom-1":(3.5,2.5),
-            "Room1":(3.5,3.5),
-            "Room2":(3,3.5),
-            "Room3":(2.5,3.5),
-            "Room4":(3.5,4.5),
-            "Room5":(3,4.5), 
-            "Room6":(1.5,4.5),
-            "Room7":(0.5,4.5),
-            "Lift-2":(2,3.25),
-            "Staircase-5":(1.5,3.5),
-            "Restroom-2":(0.5,2.5),
-            "Staffroom-2":(0.5,3.5),
-            "Staffroom":(4.4,0.4),
-            "11-b":(4.4,1.5),
-            "11-a":(4.4,2.5),
-            "9-b":(4.4,3.5),
+            "Coodinator":(11.6,3.2),
+            "Conserler":(1.9,1.1),
+            "Lift-1":(12.9,0.9),
+            "Resource":(11.6,4.2),
+            "Restroom-1":(11.6,5.1),
+            "Room1":(11.6,8.2),
+            "Room2":(11.6,6.2),
+            "Room3":(9.1,6.2),
+            "Room4":(7.7,8.2),
+            "Room5":(5.8,8.2), 
+            "Room6":(4.1,8.1),
+            "Room7":(2.7,8.1),
+            "Lift-2":(7.7,6.2),
+            "Staircase-5":(6.2,6.2),
+            "Restroom-2":(4.2,5),
+            "Staffroom-2":(4.1,6.2),
+            "Staffroom":(14.3,3.3),
+            "11-b":(14.3,4.4),
+            "11-a":(14.4,5.25),
+            "9-b":(14.45,6.5),
 
-            "AV room":(-0.5,0.4),
-            "Computer Lab":(-0.5,2.5),
-            "Launguage Lab":(-0.5,3.5),
+            "AV room":(1,4.3),
+            "Computer Lab":(1,5.9),
+            "Launguage Lab":(1,6.8),
 
         }
 
@@ -280,11 +280,11 @@ class App(ctk.CTk):
         nx.draw_networkx_edge_labels(G, pos=positions, edge_labels=edge_labels)
 
         plt.title(" BHIS Navigator",fontsize=25, fontweight='bold')
-        plt.text(-1, 5.5, "Classrooms:Yellow", color="gold", fontsize=10, fontweight='bold')
-        plt.text(-1, 5.3, "Enter Points:Purple", color="mediumpurple", fontsize=10, fontweight='bold')
-        plt.text(-1, 5.1, "Labs:Blue", color="skyblue", fontsize=10, fontweight='bold')
-        plt.text(-1, 4.9, "Utilities:Light pink", color="plum", fontsize=10, fontweight='bold')
-        plt.text(0,-1,f"\n✅ Shortest path from {start} to {end}: {' → '.join(path)}", fontsize=10, fontweight='bold')
+        plt.text(-1, 9, "Classrooms:Yellow", color="gold", fontsize=10, fontweight='bold')
+        plt.text(-1, 9.2, "Enter Points:Purple", color="mediumpurple", fontsize=10, fontweight='bold')
+        plt.text(-1, 9.4, "Labs:Blue", color="skyblue", fontsize=10, fontweight='bold')
+        plt.text(-1, 9.6, "Utilities:Light pink", color="plum", fontsize=10, fontweight='bold')
+        plt.text(5,0,f"\n Shortest path from {start} to {end}: {' → '.join(path)}", fontsize=15, fontweight='bold')
         plt.axis('off')
         plt.show()
 
