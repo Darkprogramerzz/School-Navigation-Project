@@ -19,7 +19,7 @@ ROOMS_SORTED = sorted(ROOMS, key=lambda s: s.lower())
 # color scheme
 PURPLE = "#5B2C6F"
 YELLOW = "#F7DC6F"
-TEXT_ON_YELLOW = "#3E0B3E"  # dark purple for readability on yellow
+TEXT_ON_YELLOW = "#310531"  # dark purple for readability on yellow
 
 class App(ctk.CTk):
     def __init__(self):
@@ -53,7 +53,8 @@ class App(ctk.CTk):
             button_color=PURPLE,
             text_color=TEXT_ON_YELLOW,
             dynamic_resizing=False,
-            width=300
+            width=300,
+            button_hover_color="#6B239D",
         )
         self.start_menu.set(ROOMS_SORTED[0])
         self.start_menu.grid(row=0, column=1, sticky="w", pady=6)
@@ -68,7 +69,8 @@ class App(ctk.CTk):
             button_color=PURPLE,
             text_color=TEXT_ON_YELLOW,
             dynamic_resizing=False,
-            width=300
+            width=300,
+            button_hover_color="#6B239D",
         )
         self.dest_menu.set(ROOMS_SORTED[1] if len(ROOMS_SORTED) > 1 else ROOMS_SORTED[0])
         self.dest_menu.grid(row=1, column=1, sticky="w", pady=6)
@@ -81,7 +83,8 @@ class App(ctk.CTk):
             hover=False,
             text_color=PURPLE,
             command=self.save_selection,
-            width=160
+            width=160,
+            hover_color="#E6C200",
         )
         self.submit_btn.pack(pady=(14, 8))
 
@@ -96,14 +99,11 @@ class App(ctk.CTk):
         start = self.start_menu.get()
         end = self.dest_menu.get()
         school_map = {
-            "Entrance-1": {"Hallway-1": 5,"Hallway-2": 5,"Entrance-2": 10,"Entrance-4": 10},
-            "Entrance-2": {"Hallway-1": 5,"Hallway-3": 5,"Entrance-1": 10,"Entrance-3": 10},
-            "Entrance-3": {"Hallway-3": 5,"Hallway-4": 5,"Entrance-2": 10,"Entrance-4": 10},
-            "Entrance-4": {"Hallway-2": 5,"Hallway-4": 5,"Entrance-1": 10,"Entrance-3": 10},
-            "Hallway-1": {"Entrance-1": 5,"Entrance-2": 5,},
-            "Hallway-2": {"Entrance-1": 3,"Entrance-4": 3,},
-            "Hallway-3": {"Entrance-3": 3,"Entrance-2": 3,},
-            "Hallway-4": {"Entrance-3": 5,"Entrance-4": 5,},
+            "Entrance-1": {"Entrance-2": 10,"Entrance-4": 10},
+            "Entrance-2": {"Entrance-1": 10,"Entrance-3": 10},
+            "Entrance-3": {"Entrance-2": 10,"Entrance-4": 10},
+            "Entrance-4": {"Entrance-1": 10,"Entrance-3": 10},
+
 
             "10-c":{"11-c": 4,"12-c":1},
             "12-c":{"10-c":1,"Coodinator":3},
@@ -214,10 +214,6 @@ class App(ctk.CTk):
             "Entrance-2":(14.7,1.5),
             "Entrance-3":(14,8.2),
             "Entrance-4":(1.2,8),
-            "Hallway-1": (7.6,2.2),
-            "Hallway-2": (2.4,4.8),
-            "Hallway-3": (13,5),
-            "Hallway-4": (7.7,7.2),
 
             "10-c":(9.2,3.3),
             "12-c":(7.7,3.3),
